@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: args-log
+spec:
+  restartPolicy: Never # Always, Never, onFailure
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    args: [ "date" ]
+
+
+# passed args in above code
+# kubectl create -f 6-pod-args-logs.yaml
+# To check logs below cmd 
+# kubectl logs args-log

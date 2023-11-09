@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: restart-policy
+spec:
+  restartPolicy: Never # Always, Never, onFailure
+  containers:
+  - name: ubuntu
+    image: ubuntu
