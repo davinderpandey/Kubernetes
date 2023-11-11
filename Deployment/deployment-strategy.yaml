@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deploy
+spec:
+  minReadySeconds: 10
+  strategy: 
+    type: Recreate
+  selector:
+    matchLabels:
+      app: my-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: nginx-v7
+        image: nginx

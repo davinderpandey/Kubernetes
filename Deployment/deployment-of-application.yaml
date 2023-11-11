@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  minReadySeconds: 10
+  strategy: 
+    type: Recreate
+  selector:
+    matchLabels:
+      app: application
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - name: application
+        image: vinsdocker/k8s-deploy-assignment
+        ports:
+        - containerPort: 80
+          name: "app-port"
+          
+        env:
+        - name: "spring.redis.host"
+          value: "10.244.1.2"
+        - name: "spring.redis.port"
+          value: "6379"
